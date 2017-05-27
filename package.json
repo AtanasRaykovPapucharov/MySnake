@@ -1,0 +1,25 @@
+{
+  "name": "my-snake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "final": "gulp final",
+    "sass": "gulp sass:watch",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-typescript-compiler": "^1.0.1",
+    "gulp-uglifycss": "^1.0.8",
+    "openurl": "^1.1.1"
+  }
+}

@@ -6,7 +6,8 @@
   "scripts": {
     "fin": "gulp ts:final",
     "sass": "gulp sass:watch",
-    "start": "node server.js"
+    "start": "node server.js",
+    "ts": "gulp ts:watch"
   },
   "author": "",
   "license": "ISC",

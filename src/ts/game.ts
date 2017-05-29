@@ -1,12 +1,12 @@
 import { Snake } from './models/snake';
-import { SIZE, SLOWEST, FASTEST } from './constants';
+import { GameObjectSize} from './utils/constants';
+import { Renderer } from './utils/renderer';
 
 export class Game {
-	constructor() {
-
-	}
+	constructor() {}
 
 	init(): void {
-		alert('Game must work!' + SIZE);
+		alert('Game must work!');
+		const snake = new Snake();
 	}
 }

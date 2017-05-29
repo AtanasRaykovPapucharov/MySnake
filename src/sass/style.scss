@@ -1,0 +1,22 @@
+body {
+	background: gainsboro;
+	padding-left: 10%;
+	padding-right: 10%;
+
+	.header {
+		h1 {
+			color: #006400;
+			text-align: center;
+			text-shadow: -1px 1px #000000;
+		}
+	}
+
+	.content {
+		min-height: 450px;
+		border: 1px solid #000000;
+	}
+
+	.footer {
+		padding: 1%;
+	}
+}

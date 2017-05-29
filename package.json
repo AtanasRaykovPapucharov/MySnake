@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "final": "gulp final",
+    "fin": "gulp ts:final",
     "sass": "gulp sass:watch",
     "start": "node server.js"
   },
@@ -14,12 +14,22 @@
     "express": "^4.15.3"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
     "gulp-concat-css": "^2.3.0",
     "gulp-sass": "^3.1.0",
-    "gulp-typescript-compiler": "^1.0.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-typescript": "^3.1.7",
+    "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.8",
-    "openurl": "^1.1.1"
+    "gulp-util": "^3.0.8",
+    "openurl": "^1.1.1",
+    "tsify": "^3.0.1",
+    "typescript": "^2.3.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
   }
 }

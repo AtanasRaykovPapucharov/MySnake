@@ -1,54 +1,49 @@
-import { Position } from '../interfaces/position';
-import { Size } from '../interfaces/size';
+import { IPoint } from '../interfaces/IPoint';
+import { IGameObject } from '../interfaces/IGameObject';
 import { Directions } from '../enums/directions';
+import { Point } from './point';
 import { SnakePart } from './snakePart';
 import { GameObjectSize, CanvasWidth, CanvasHeight } from '../utils/constants';
 
 export class Snake {
-	snakeParts: [SnakePart];
+	snakeParts: IGameObject[];
 	initialBodyPartsCount: number;
-	direction: Directions;
-	size: Size;
+	direction: string;
+	size: IPoint;
 
 	constructor() {
-		this.direction = Directions.right;
-		this.initialBodyPartsCount = 3;
-		// this.size.width = GameObjectSize;
-		// this.size.height = GameObjectSize;
+		this.snakeParts = [];
+		this.initialBodyPartsCount = 4;
+		this.direction = Directions.right.toString();
+		this.size = new Point(GameObjectSize, GameObjectSize);
 	}
 
 	init(): void {
-		console.log(this.size);
-
-		let headPosition: Position;
-		headPosition.x = CanvasWidth / 2;
-		headPosition.y = CanvasHeight / 2;
+		let headPosition: IPoint;
+		headPosition = new Point(CanvasWidth / 2, CanvasHeight / 2);
 
 		const head = new SnakePart(headPosition, this.size, 'head');
+
 		this.snakeParts.push(head);
 
 		for (let i = 1; i <= this.initialBodyPartsCount; i += 1) {
-			let bodyPartPosition: Position;
-			bodyPartPosition.x = CanvasWidth / 2 - i * GameObjectSize;
-			bodyPartPosition.y = CanvasHeight / 2;
+			let bodyPartPosition: IPoint;
+			bodyPartPosition = new Point(CanvasWidth / 2 - i * GameObjectSize, CanvasHeight / 2);
 
-			const bodyPart = new SnakePart(bodyPartPosition, this.size, 'bodyPart');
+			const bodyPart = new SnakePart(bodyPartPosition, this.size, 'body');
 			this.snakeParts.push(bodyPart);
 		}
-
-		let tailPosition: Position;
-		tailPosition.x = CanvasWidth / 2 - 4 * GameObjectSize;
-		tailPosition.y = CanvasHeight / 2;
-
-		const tail = new SnakePart(tailPosition, this.size, 'tail');
-		this.snakeParts.push(tail);
 	}
 
-	addBodyPart(direction: string): void {
-		const tail = this.snakeParts[this.snakeParts.length - 1]
-		tail.position.x -= GameObjectSize;
+	addBodyPart(): void {
+		const lastPart = this.snakeParts[this.snakeParts.length - 1];
+		const newPos = new Point(lastPart.position.x - GameObjectSize, lastPart.position.y);
 
-		this.snakeParts[this.snakeParts.length - 1].kind = 'bodyPart';
-		this.snakeParts.push(tail);
+		const bodyPart = new SnakePart(newPos, this.size, 'body');
+		this.snakeParts.push(bodyPart);
+	}
+
+	changeDirection(): void {
+
 	}
 }

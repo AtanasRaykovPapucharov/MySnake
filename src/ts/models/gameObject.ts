@@ -1,13 +1,12 @@
-import { Position } from '../interfaces/position';
-import { Size } from '../interfaces/size';
-import { Object } from '../interfaces/object';
+import { IPoint } from '../interfaces/IPoint';
+import { IGameObject } from '../interfaces/IGameObject';
 
-export class GameObject implements Object {
-	position: Position;
-	size: Size;
+export class GameObject implements IGameObject {
+	position: IPoint;
+	size: IPoint;
 	kind: string;
 
-	constructor(pos: Position, size: Size, kind: string) {
+	constructor(pos: IPoint, size: IPoint, kind: string) {
 		this.position = pos;
 		this.size = size;
 		this.kind = kind;

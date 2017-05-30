@@ -1,9 +1,12 @@
-import { Position } from '../interfaces/position';
-import { Size } from '../interfaces/size';
+import { IPoint } from '../interfaces/IPoint';
 import { GameObject } from './gameObject';
 
 export class Food extends GameObject {
-	constructor(pos: Position, size: Size, kind: string) {
+	constructor(pos: IPoint, size: IPoint, kind: string) {
 		super(pos, size, kind);
+	}
+
+	isEaten(): boolean {
+		return false;
 	}
 }

@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "clean": "gulp clean",
     "fin": "gulp ts:final",
     "sass": "gulp sass:watch",
-    "start": "node server.js",
-    "ts": "gulp ts:watch"
+    "start": "npm run clean && npm run fin && node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-concat-css": "^2.3.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",

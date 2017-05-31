@@ -6,3 +6,7 @@ export const Margin = 11;
 export const FoodColor = 'yellow';
 export const HeadColor = 'red';
 export const BodyPartColor = 'green';
+export const LeftArrowCode = 37;
+export const UpArrowCode = 38;
+export const RightArrowCode = 39;
+export const DownArrowCode = 40;

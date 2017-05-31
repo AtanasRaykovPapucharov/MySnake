@@ -5,8 +5,4 @@ export class Food extends GameObject {
 	constructor(pos: IPoint, size: IPoint, kind: string) {
 		super(pos, size, kind);
 	}
-
-	isEaten(): boolean {
-		return false;
-	}
 }

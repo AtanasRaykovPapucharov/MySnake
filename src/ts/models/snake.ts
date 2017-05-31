@@ -8,13 +8,13 @@ import { GameObjectSize, CanvasWidth, CanvasHeight } from '../utils/constants';
 export class Snake {
 	snakeParts: IGameObject[];
 	initialBodyPartsCount: number;
-	direction: string;
+	direction: number;
 	size: IPoint;
 
 	constructor() {
 		this.snakeParts = [];
 		this.initialBodyPartsCount = 4;
-		this.direction = Directions.right.toString();
+		this.direction = Directions.right;
 		this.size = new Point(GameObjectSize, GameObjectSize);
 	}
 
@@ -35,7 +35,7 @@ export class Snake {
 		}
 	}
 
-	addBodyPart(): void {
+	eat(): void {
 		const lastPart = this.snakeParts[this.snakeParts.length - 1];
 		const newPos = new Point(lastPart.position.x - GameObjectSize, lastPart.position.y);
 
@@ -43,25 +43,56 @@ export class Snake {
 		this.snakeParts.push(bodyPart);
 	}
 
-	changeDirection(): void {
-
-	}
-
-	updateSnake(snake: Snake): void {
-		const parts = snake.snakeParts;
-		const dir = snake.direction;
-		
-		switch (dir) {
-			case 'right':
-				for (let i = 0; i < parts.length; i += 1) {
-					parts[i].position.x += GameObjectSize;
+	moveSnake(snake: Snake) {
+		switch (snake.direction) {
+			case Directions.left:
+				for (let i = 0; i < snake.snakeParts.length; i += 1) {
+					snake.snakeParts[i].position.x -= 1;
 				}
 				break;
-			case 'left':
+			case Directions.right:
+				for (let i = 0; i < snake.snakeParts.length; i += 1) {
+					snake.snakeParts[i].position.x += 1;
+				}
 				break;
-			case 'up':
+			case Directions.up:
+				for (let i = 0; i < snake.snakeParts.length; i += 1) {
+					snake.snakeParts[i].position.y -= 1;
+				}
 				break;
-			case 'down':
+			case Directions.down:
+				for (let i = 0; i < snake.snakeParts.length; i += 1) {
+					snake.snakeParts[i].position.y += 1;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+
+	changeDirection(direction: number): void {
+		switch (direction) {
+			case Directions.left:
+				if (this.direction != Directions.right) {
+					this.direction = Directions.left;
+				}
+				break;
+			case Directions.right:
+				if (this.direction != Directions.left) {
+					this.direction = Directions.right;
+				}
+				break;
+			case Directions.up:
+				if (this.direction != Directions.down) {
+					this.direction = Directions.up;
+				}
+				break;
+			case Directions.down:
+				if (this.direction != Directions.up) {
+					this.direction = Directions.down;
+				}
+				break;
+			default:
 				break;
 		}
 	}

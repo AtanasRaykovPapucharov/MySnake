@@ -30,7 +30,7 @@ export class Renderer {
 		const parts = snake.snakeParts;
 
 		for (let i = 0; i < parts.length; i += 1) {
-			const part = parts[i];
+			let part = parts[i];
 			switch (part.kind) {
 				case 'head':
 					this.context.fillStyle = HeadColor;
@@ -62,6 +62,6 @@ export class Renderer {
 	}
 
 	clear(): void {
-		this.context.clear();
+		this.context.clearRect(0, 0, CanvasWidth, CanvasHeight);
 	}
 }

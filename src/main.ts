@@ -1,12 +1,11 @@
+import { UpArrowCode, DownArrowCode, LeftArrowCode, RightArrowCode } from './ts/utils/constants';
+import { Directions } from './ts/enums/directions';
 import { Renderer } from './ts/utils/renderer';
 import { Snake } from './ts/models/snake';
 import { Game } from './ts/game';
-import { Directions } from './ts/enums/directions';
-import { UpArrowCode, DownArrowCode, LeftArrowCode, RightArrowCode } from './ts/utils/constants';
 
 const content = document.getElementById('content')
 const canvas = content.appendChild(document.createElement('canvas'));
-
 const renderer = new Renderer(canvas);
 const snake = new Snake();
 const game = new Game(renderer, snake);
@@ -16,7 +15,6 @@ window.onload = () => {
 	game.init();
 	game.gameLoop();
 };
-
 
 function keyboardListener(e: KeyboardEvent) {
 	if (e.keyCode == LeftArrowCode) {

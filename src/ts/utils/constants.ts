@@ -1,7 +1,7 @@
 export const CanvasWidth = 1000;
 export const CanvasHeight = 450;
 export const CanvasBackgroundColor = 'yellowgreen';
-export const GameObjectSize = 20;
+export const GameObjectSize = 15;
 export const Margin = 11;
 export const FoodColor = 'yellow';
 export const HeadColor = 'red';
@@ -10,3 +10,4 @@ export const LeftArrowCode = 37;
 export const UpArrowCode = 38;
 export const RightArrowCode = 39;
 export const DownArrowCode = 40;
+export const Velocity = 150;

@@ -46,23 +46,47 @@ export class Snake {
 	moveSnake(snake: Snake) {
 		switch (snake.direction) {
 			case Directions.left:
-				for (let i = 0; i < snake.snakeParts.length; i += 1) {
-					snake.snakeParts[i].position.x -= 1;
+				for (let i = snake.snakeParts.length - 1; i > 0; i -= 1) {
+					snake.snakeParts[i].position.x = snake.snakeParts[i - 1].position.x;
+					snake.snakeParts[i].position.y = snake.snakeParts[i - 1].position.y;
+				}
+				snake.snakeParts[0].position.x -= GameObjectSize;
+
+				if (snake.snakeParts[0].position.x < 0) {
+					snake.snakeParts[0].position.x = CanvasWidth;
 				}
 				break;
 			case Directions.right:
-				for (let i = 0; i < snake.snakeParts.length; i += 1) {
-					snake.snakeParts[i].position.x += 1;
+				for (let i = snake.snakeParts.length - 1; i > 0; i -= 1) {
+					snake.snakeParts[i].position.x = snake.snakeParts[i - 1].position.x;
+					snake.snakeParts[i].position.y = snake.snakeParts[i - 1].position.y;
+				}
+				snake.snakeParts[0].position.x += GameObjectSize;
+
+				if (snake.snakeParts[0].position.x + GameObjectSize > CanvasWidth) {
+					snake.snakeParts[0].position.x = 0;
 				}
 				break;
 			case Directions.up:
-				for (let i = 0; i < snake.snakeParts.length; i += 1) {
-					snake.snakeParts[i].position.y -= 1;
+				for (let i = snake.snakeParts.length - 1; i > 0; i -= 1) {
+					snake.snakeParts[i].position.x = snake.snakeParts[i - 1].position.x;
+					snake.snakeParts[i].position.y = snake.snakeParts[i - 1].position.y;
+				}
+				snake.snakeParts[0].position.y -= GameObjectSize;
+
+				if (snake.snakeParts[0].position.y < 0) {
+					snake.snakeParts[0].position.y = CanvasHeight;
 				}
 				break;
 			case Directions.down:
-				for (let i = 0; i < snake.snakeParts.length; i += 1) {
-					snake.snakeParts[i].position.y += 1;
+				for (let i = snake.snakeParts.length - 1; i > 0; i -= 1) {
+					snake.snakeParts[i].position.x = snake.snakeParts[i - 1].position.x;
+					snake.snakeParts[i].position.y = snake.snakeParts[i - 1].position.y;
+				}
+				snake.snakeParts[0].position.y += GameObjectSize;
+
+				if (snake.snakeParts[0].position.y + GameObjectSize > CanvasHeight) {
+					snake.snakeParts[0].position.y = 0;
 				}
 				break;
 			default:

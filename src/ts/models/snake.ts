@@ -46,4 +46,23 @@ export class Snake {
 	changeDirection(): void {
 
 	}
+
+	updateSnake(snake: Snake): void {
+		const parts = snake.snakeParts;
+		const dir = snake.direction;
+		
+		switch (dir) {
+			case 'right':
+				for (let i = 0; i < parts.length; i += 1) {
+					parts[i].position.x += GameObjectSize;
+				}
+				break;
+			case 'left':
+				break;
+			case 'up':
+				break;
+			case 'down':
+				break;
+		}
+	}
 }

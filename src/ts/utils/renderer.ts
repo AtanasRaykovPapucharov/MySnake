@@ -60,4 +60,8 @@ export class Renderer {
 		this.context.strokeStyle = 'black';
 		this.context.stroke();
 	}
+
+	clear(): void {
+		this.context.clear();
+	}
 }

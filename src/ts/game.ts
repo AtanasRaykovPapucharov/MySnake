@@ -7,6 +7,7 @@ import { IPoint } from './interfaces/IPoint';
 
 export class Game {
 	renderer: any;
+	snake: Snake;
 
 	constructor(renderer: any) {
 		this.renderer = renderer;
@@ -22,20 +23,21 @@ export class Game {
 		return new Point(pX, pY);
 	}
 
-	gameLoop(): void {
-
-	}
-
-	init(): void {
+	init(): void{
 		const foodPos = this.getRandomPoint();
 		const food = new Food(foodPos, foodPos, '');
-		const snake = new Snake();
-
-		snake.init();
 		this.renderer.initCanvas();
-		this.renderer.drawSnake(snake);
 		this.renderer.drawFood(food);
+	}
 
+	gameLoop(): void {
+		const snake = new Snake();
+		snake.init();
+		this.renderer.drawSnake(snake);
 
+		snake.updateSnake(this.snake);
+		this.renderer.clear();
+		this.renderer.drawSnake(this.snake);
+		requestAnimationFrame(this.gameLoop);
 	}
 }

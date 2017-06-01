@@ -6,7 +6,10 @@ import {
 	FoodColor,
 	HeadColor,
 	BodyPartColor,
-	BorderColor
+	BorderColor,
+	FinalText,
+	TextMargin,
+	TextFont
 } from './constants';
 
 export class Renderer {
@@ -60,6 +63,12 @@ export class Renderer {
 		this.context.lineWidth = 1;
 		this.context.strokeStyle = BorderColor;
 		this.context.stroke();
+	}
+
+	gameOver(): void {
+		this.context.font = TextFont;
+		this.context.fillStyle = BorderColor;
+		this.context.fillText(FinalText, CanvasWidth / 2 - TextMargin, CanvasHeight / 2);
 	}
 
 	clear(): void {

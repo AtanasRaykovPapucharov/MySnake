@@ -13,12 +13,14 @@ export class Game {
 	score: Score;
 	points: number;
 	renderer: any;
+	isStopped: boolean;
 
 	constructor(renderer: any, snake: Snake) {
 		this.snake = snake;
 		this.score = new Score();
 		this.points = this.score.getPoints();
 		this.renderer = renderer;
+		this.isStopped = false;
 	}
 
 	getRandomNumberBetween(min: number, max: number): number {
@@ -56,18 +58,27 @@ export class Game {
 	}
 
 	newFrame(): void {
-		this.renderer.clear();
-		this.renderer.initCanvas();
-		this.renderer.drawFood(this.food);
-		this.renderer.drawSnake(this.snake);
-		this.snake.moveSnake(this.snake);
+		if (!this.isStopped) {
+			this.renderer.clear();
+			this.renderer.initCanvas();
+			this.renderer.drawFood(this.food);
+			this.renderer.drawSnake(this.snake);
+			this.snake.moveSnake(this.snake);
 
-		if (this.getFood()) {
-			this.snake.eat();
-			this.food = this.getRandomFood();
-			this.score.addPoints();
-			this.points = this.score.getPoints();
-			document.getElementById('current-points').innerHTML = this.points.toString();
+			if (this.snake.touchItself(this.snake)) {
+				this.renderer.clear();
+				this.renderer.initCanvas();
+				this.renderer.gameOver();
+				this.isStopped = true;
+			}
+
+			if (this.getFood()) {
+				this.snake.eat();
+				this.food = this.getRandomFood();
+				this.score.addPoints();
+				this.points = this.score.getPoints();
+				document.getElementById('current-points').innerHTML = this.points.toString();
+			}
 		}
 	}
 

@@ -43,6 +43,17 @@ export class Snake {
 		this.snakeParts.push(bodyPart);
 	}
 
+	touchItself(snake: Snake): boolean {
+		const head = snake.snakeParts[0];
+		for (let i = 1; i < snake.snakeParts.length; i += 1) {
+			if (head.position.x == snake.snakeParts[i].position.x &&
+				head.position.y == snake.snakeParts[i].position.y) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	moveSnake(snake: Snake) {
 		switch (snake.direction) {
 			case Directions.left:

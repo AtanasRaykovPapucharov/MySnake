@@ -11,3 +11,6 @@ export const UpArrowCode = 38;
 export const RightArrowCode = 39;
 export const DownArrowCode = 40;
 export const Speed = 180;
+export const FinalText = 'Game over!';
+export const TextMargin = 100;
+export const TextFont = '40px Georgia';

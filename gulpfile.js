@@ -19,6 +19,12 @@ gulp.task('png:copy', () => {
         .pipe(gulp.dest('./build'));
 });
 
+gulp.task('ttf:copy', () => {
+    return gulp
+        .src(['./src/**/*.ttf'])
+        .pipe(gulp.dest('./build'));
+});
+
 gulp.task('html:copy', () => {
     return gulp
         .src(['./src/**/*.html'])
@@ -43,7 +49,7 @@ gulp.task('css:compress', function () {
         .pipe(gulp.dest('./build'))
 });
 
-gulp.task('copy', ['html:copy', 'png:copy', 'js:copy', 'css:compress']);
+gulp.task('copy', ['html:copy', 'png:copy', 'ttf:copy', 'js:copy', 'css:compress']);
 
 //===================================================================//
 

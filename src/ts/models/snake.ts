@@ -53,7 +53,7 @@ export class Snake {
 				snake.snakeParts[0].position.x -= GameObjectSize;
 
 				if (snake.snakeParts[0].position.x < 0) {
-					snake.snakeParts[0].position.x = CanvasWidth;
+					snake.snakeParts[0].position.x = CanvasWidth - GameObjectSize;
 				}
 				break;
 			case Directions.right:
@@ -75,7 +75,7 @@ export class Snake {
 				snake.snakeParts[0].position.y -= GameObjectSize;
 
 				if (snake.snakeParts[0].position.y < 0) {
-					snake.snakeParts[0].position.y = CanvasHeight;
+					snake.snakeParts[0].position.y = CanvasHeight - GameObjectSize;
 				}
 				break;
 			case Directions.down:

@@ -5,7 +5,7 @@
 	<title>MySnake</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="./assets/snake.png">
+	<link rel="icon" href="./assets/images/snake.png">
 	<link rel="stylesheet" href="./bundle.css">
 </head>
 
@@ -14,12 +14,22 @@
 		<header class="header">
 			<h1>My Snake Game</h1>
 		</header>
+		<div class="row">
+			<div class="col-1 text">
+				Score:&nbsp;&nbsp;&nbsp;
+			</div>
+			<div id="current-points" class="col-1 numb"></div>
+			<div class="col-1 text">
+				High score:&nbsp;&nbsp;&nbsp;
+			</div>
+			<div id="high-score" class="col-1 numb"></div>
+		</div>
 		<main id="content"></main>
 		<footer class="footer">
 			Written by Atanas Papucharov
 		</footer>
 	</div>
-	
+
 	<script src="./bundle.js"></script>
 </body>
 

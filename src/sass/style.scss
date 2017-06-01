@@ -1,5 +1,37 @@
+@font-face {
+	font-family: 'Sunny';
+	src: url("./assets/fonts/Sunny Spring Day - TTF.ttf"); 
+}
+
+.row {
+	display: flex;
+}
+
+.col-1 {
+	flex: 1;
+}
+
+.col-2 {
+	flex: 2;
+}
+
+.col-3 {
+	flex: 4;
+}
+
+.text {
+	text-align: right;
+}
+
+.text, .numb {
+	color: #4682b4;
+	text-shadow: -1px 1px #000000;
+	font-size: 30px;
+	font-family: 'Sunny', 'Times New Roman', Times, serif
+}
+
 body {
-	background: gainsboro;
+	background: #dcdcdc;
 	padding-left: 10%;
 	padding-right: 10%;
 
@@ -17,6 +49,7 @@ body {
 	}
 
 	.footer {
-		padding: 1%;
+		padding-top: 1%;
+		max-height: 10px;
 	}
 }

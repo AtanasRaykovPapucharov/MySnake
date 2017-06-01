@@ -5,7 +5,8 @@ import {
 	CanvasBackgroundColor,
 	FoodColor,
 	HeadColor,
-	BodyPartColor
+	BodyPartColor,
+	BorderColor
 } from './constants';
 
 export class Renderer {
@@ -35,13 +36,13 @@ export class Renderer {
 				case 'head':
 					this.context.fillStyle = HeadColor;
 					this.context.fillRect(part.position.x, part.position.y, part.size.x, part.size.y);
-					this.context.strokeStyle = 'black';
+					this.context.strokeStyle = BorderColor;
 					this.context.strokeRect(part.position.x, part.position.y, part.size.x, part.size.y);
 					break;
 				case 'body':
 					this.context.fillStyle = BodyPartColor;
 					this.context.fillRect(part.position.x, part.position.y, part.size.x, part.size.y);
-					this.context.strokeStyle = 'black';
+					this.context.strokeStyle = BorderColor;
 					this.context.strokeRect(part.position.x, part.position.y, part.size.x, part.size.y);
 					break;
 			}
@@ -49,15 +50,15 @@ export class Renderer {
 	}
 
 	drawFood(food: any): void {
-		const centerX = food.position.x;
-		const centerY = food.position.y;
+		const centerX = food.position.x + GameObjectSize / 2;
+		const centerY = food.position.y + GameObjectSize / 2;
 
 		this.context.beginPath();
 		this.context.arc(centerX, centerY, GameObjectSize / 2, 0, 2 * Math.PI, false);
-		this.context.fillStyle =FoodColor;
+		this.context.fillStyle = FoodColor;
 		this.context.fill();
-		this.context.lineWidth = 2;
-		this.context.strokeStyle = 'black';
+		this.context.lineWidth = 1;
+		this.context.strokeStyle = BorderColor;
 		this.context.stroke();
 	}
 

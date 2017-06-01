@@ -13,7 +13,7 @@ const game = new Game(renderer, snake);
 window.onload = () => {
 	document.onkeydown = keyboardListener;
 	game.init();
-	game.gameLoop();
+	game.loop();
 };
 
 function keyboardListener(e: KeyboardEvent) {

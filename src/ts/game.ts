@@ -1,19 +1,24 @@
-import { CanvasWidth, CanvasHeight, GameObjectSize, Margin, Velocity } from './utils/constants';
+import { CanvasWidth, CanvasHeight, GameObjectSize, Speed } from './utils/constants';
 import { IGameObject } from './interfaces/IGameObject';
 import { IPoint } from './interfaces/IPoint';
 import { Directions } from './enums/directions';
 import { Point } from './models/point';
 import { Snake } from './models/snake';
 import { Food } from './models/food';
+import { Score } from './models/score';
 
 export class Game {
-	renderer: any;
 	snake: Snake;
 	food: IGameObject;
+	score: Score;
+	points: number;
+	renderer: any;
 
 	constructor(renderer: any, snake: Snake) {
-		this.renderer = renderer;
 		this.snake = snake;
+		this.score = new Score();
+		this.points = this.score.getPoints();
+		this.renderer = renderer;
 	}
 
 	getRandomNumberBetween(min: number, max: number): number {
@@ -21,8 +26,11 @@ export class Game {
 	}
 
 	getRandomFood(): IGameObject {
-		const pX = this.getRandomNumberBetween(Margin, CanvasWidth - Margin);
-		const pY = this.getRandomNumberBetween(Margin, CanvasHeight - Margin);
+		const pX = Math.floor((Math.random() * (CanvasWidth - 2 * GameObjectSize) / GameObjectSize))
+			* GameObjectSize + GameObjectSize;
+		const pY = Math.floor((Math.random() * (CanvasHeight - 2 * GameObjectSize) / GameObjectSize))
+			* GameObjectSize + GameObjectSize;
+
 		const foodPos = new Point(pX, pY);
 		return new Food(foodPos, foodPos, '');
 	}
@@ -35,10 +43,15 @@ export class Game {
 
 		this.snake.init();
 		this.renderer.drawSnake(this.snake);
+		document.getElementById('current-points').innerHTML = this.points.toString();
 	}
 
 	getFood(): boolean {
 		const head = this.snake.snakeParts[0];
+		if (head.position.x == this.food.position.x &&
+			head.position.y == this.food.position.y) {
+			return true;
+		}
 		return false;
 	}
 
@@ -52,12 +65,15 @@ export class Game {
 		if (this.getFood()) {
 			this.snake.eat();
 			this.food = this.getRandomFood();
+			this.score.addPoints();
+			this.points = this.score.getPoints();
+			document.getElementById('current-points').innerHTML = this.points.toString();
 		}
 	}
 
-	gameLoop(): void {
+	loop(): void {
 		setInterval(() => {
 			this.newFrame();
-		}, Velocity);
+		}, Speed);
 	}
 }

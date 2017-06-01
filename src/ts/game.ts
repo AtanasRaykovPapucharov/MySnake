@@ -82,10 +82,6 @@ export class Game {
 				this.score.addPoints();
 				this.points = this.score.getPoints();
 				document.getElementById('current-points').innerHTML = this.points.toString();
-
-				if (this.points !== 0 && this.points % 100 === 0) {
-					this.speed -= 20;
-				}
 			}
 		}
 	}

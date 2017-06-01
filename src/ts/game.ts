@@ -48,6 +48,7 @@ export class Game {
 		this.snake.init();
 		this.renderer.drawSnake(this.snake);
 		document.getElementById('current-points').innerHTML = this.points.toString();
+
 	}
 
 	getFood(): boolean {

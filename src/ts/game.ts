@@ -10,6 +10,7 @@ import { Score } from './models/score';
 export class Game {
 	snake: Snake;
 	food: IGameObject;
+	speed: number;
 	score: Score;
 	points: number;
 	renderer: any;
@@ -21,6 +22,7 @@ export class Game {
 		this.points = this.score.getPoints();
 		this.renderer = renderer;
 		this.isStopped = false;
+		this.speed = Speed;
 	}
 
 	getRandomNumberBetween(min: number, max: number): number {
@@ -70,6 +72,7 @@ export class Game {
 				this.renderer.initCanvas();
 				this.renderer.gameOver();
 				this.isStopped = true;
+				document.getElementById('btn').classList.remove('hidden');
 			}
 
 			if (this.getFood()) {
@@ -78,6 +81,10 @@ export class Game {
 				this.score.addPoints();
 				this.points = this.score.getPoints();
 				document.getElementById('current-points').innerHTML = this.points.toString();
+
+				if (this.points !== 0 && this.points % 100 === 0) {
+					this.speed -= 20;
+				}
 			}
 		}
 	}
@@ -85,6 +92,12 @@ export class Game {
 	loop(): void {
 		setInterval(() => {
 			this.newFrame();
-		}, Speed);
+		}, this.speed);
+	}
+
+	start(): void {
+		document.getElementById('btn').classList.add('hidden');
+		this.init();
+		this.loop();
 	}
 }

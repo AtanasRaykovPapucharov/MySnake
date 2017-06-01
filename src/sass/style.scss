@@ -19,6 +19,15 @@
 	flex: 4;
 }
 
+#btn {
+	display: block;
+	margin: 0 auto;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
 .text {
 	text-align: right;
 }
